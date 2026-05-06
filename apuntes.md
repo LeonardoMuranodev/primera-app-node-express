@@ -184,11 +184,7 @@ En tus métodos `POST`, `PUT` y `DELETE` utilizaste un bloque `catch` vacío: `c
 
 ## Middlewares
 
-
-
 Como hago para pasarle el producto una vez que lo valide que existe de un middleware a un controller como actualizar producto
-
-Se 
 
 ## JOI
 

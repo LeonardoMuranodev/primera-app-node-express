@@ -6,11 +6,6 @@ const obtenerCategorias = async (req,res) => {
     try {
         const categorias = await Categoria.findAll({
             attributes: ["nombre"],
-            include: {
-                model: Producto,
-                as: "productos",
-                attributes: ["nombre", "precio", "stock"]
-            }
         })
         res.status(200).json(categorias)
     } catch (error) {
@@ -38,8 +33,50 @@ const crearCategoria = async (req,res) => {
     }
 }
 
+const eliminarCategoria = async (req,res) => {
+    // En vez de romperse la app, responde con un mensaje de error
+    try {
+        const {id} = req.params
+
+        // Importante el await
+        const totalEliminados = await Categoria.destroy({
+            where: {
+                id
+            }
+        })
+        if(totalEliminados == 0) {
+            return res.status(200).json({message: "No se eliminaron productos "})
+        }
+
+        res.status(200).json({message: "Producto eliminado con exito"})
+    } catch {
+        res.status(500).json({message: "Error a la hora de eliminar el producto"})
+    }
+}
+
+//Creo los controladores
+/*
+const obtenerCategorias = async (req,res) => {
+    try {
+        const categorias = await Categoria.findAll({
+            attributes: ["nombre"],
+            include: {
+                model: Producto,
+                as: "productos",
+                attributes: ["nombre", "precio", "stock"]
+            }
+        })
+        res.status(200).json(categorias)
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+*/
 // Exporto un objeto con cada funcion
 module.exports = {
     obtenerCategorias,
-    crearCategoria
+    crearCategoria,
+    eliminarCategoria
 }

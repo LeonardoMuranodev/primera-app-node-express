@@ -10,4 +10,4 @@ router.post("/", validarProducto, productosControllers.crearProducto)
 router.put("/:id", validarProducto, validarProductoId, productosControllers.actualizarProducto)
 router.delete("/:id", validarProductoId, productosControllers.eliminarProducto)
 
-module.export = router
+module.exports = router

@@ -50,7 +50,7 @@ const validarProductoId = async (req, res, next) => {
     }
 }
 
-module.export = {
+module.exports = {
     validarProducto,
     validarProductoId,
     validarProductoIdConCategoria
