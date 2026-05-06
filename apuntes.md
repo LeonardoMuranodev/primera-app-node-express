@@ -182,6 +182,14 @@ await db.sequelize.sync();
 **4. Buenas prácticas en el `catch`**
 En tus métodos `POST`, `PUT` y `DELETE` utilizaste un bloque `catch` vacío: `catch { res.status(...) }`. Aunque en versiones modernas de Node esto es válido, siempre es mejor atrapar el error: `catch (error) { ... }`. De esta forma, si algo falla, puedes hacer un `console.log(error)` en tu terminal y saber rápidamente si falló la base de datos, si te faltó un dato, etc.
 
+## Middlewares
+
+
+
+Como hago para pasarle el producto una vez que lo valide que existe de un middleware a un controller como actualizar producto
+
+Se 
+
 ## JOI
 
 Es una libreria para validaciones
@@ -199,3 +207,23 @@ Puede ser que haya muchos errores en una sola validacion, entonces error.details
 Value sirve por si hay un error de algun campo, y si es pasa, damos un valor por defecto, entonces JOI nos va a devolver el objeto con ese valor por defecto
 
 Ahi si nos importa el VALUE
+
+## Como trabajar con JOI profesionalmente
+
+Se debe crear una carpeta llamada schema, que el modelo que debe seguir el req.body, con un archivo de schema por cada entidad que haya, en este caso serian dos entidades: producto y categoria
+
+## Errores personalizados de JOI
+
+Agregamos el .messages y le pasamos un objeto
+
+La clave es el tipo del error y el valor es el mensaje que le vamos a dar al usuario cuando cometa ese error
+
+## Validaciones personalizadas de JOI
+
+Se le debe pasar el .custom() y le pasamos una funcion que hagamos nosotros
+
+## TODO
+
+Agregar el modelo de categoria, el schema y los middlewares
+
+Editar los controlares actuales en base a eso
