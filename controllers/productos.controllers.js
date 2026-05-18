@@ -43,7 +43,7 @@ const actualizarProducto = async (req, res) => {
         const {nombre, precio, stock} = req.body
         const producto = req.producto
         // Importante el await
-        producto = await Producto.update({
+        await Producto.update({
             nombre,
             precio,
             stock

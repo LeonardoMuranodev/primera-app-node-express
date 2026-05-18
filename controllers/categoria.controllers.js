@@ -20,7 +20,7 @@ const obtenerCategoria = (req, res) => {
         const {id} = req.params
         const categoria = req.categoria
         res.status(200).json(categoria)
-    } catch {
+    } catch (error){
         res.status(500).json({
             error: error.message
         })
@@ -42,17 +42,18 @@ const crearCategoria = async (req,res) => {
 }
 
 const actualizarCategoria = async (req, res) => {
-    const {id} = req.params
-    const {categoria} = req.categoria
+    try {
+        const {id} = req.params
+        const {nombre} = req.body // Extraemos el nombre del body validado por Joi
 
-    categoria = await Categoria.update({
-        nombre,
-    }, {
-        where: {
-            id
-        }
+        await Categoria.update(
+            { nombre }, 
+            { where: { id } }
+        )
+        res.status(200).json({message: "Categoría actualizada con éxito"})
+    } catch (error) {
+        res.status(500).json({error: "Error al actualizar"})
     }
-    )
 }
 
 const eliminarCategoria = async (req,res) => {

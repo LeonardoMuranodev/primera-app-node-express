@@ -11,7 +11,7 @@ const validarCategoria = (req, res, next) => {
 
 const validarCategoriaId = async (req, res, next) => {
     const {id} = req.params
-    const categoria = await categoria.findByPk(id)
+    const categoria = await Categoria.findByPk(id)
     if (categoria) {
         req.categoria = categoria
         next()
