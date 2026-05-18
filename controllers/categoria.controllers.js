@@ -56,7 +56,7 @@ const eliminarCategoria = async (req,res) => {
 
 //Creo los controladores
 /*
-const obtenerCategorias = async (req,res) => {
+const obtenerCategoriasConProductos = async (req,res) => {
     try {
         const categorias = await Categoria.findAll({
             attributes: ["nombre"],

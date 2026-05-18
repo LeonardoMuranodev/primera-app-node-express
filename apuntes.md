@@ -223,3 +223,7 @@ Se le debe pasar el .custom() y le pasamos una funcion que hagamos nosotros
 Agregar el modelo de categoria, el schema y los middlewares
 
 Editar los controlares actuales en base a eso
+
+Actualizar el get de productos
+
+Realizar get de categorias con productos cantidad y detalle
