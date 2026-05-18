@@ -1,6 +1,6 @@
 const Joi = require("joi")
 
-schemaCategoria = Joi.object({
+const schemaCategoria = Joi.object({
     nombre: Joi.string().min(3).max(50).required()
         .messages({
             "string.base": "El nombre debe ser texto",

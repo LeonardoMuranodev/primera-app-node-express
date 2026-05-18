@@ -1,3 +1,4 @@
+const { Categoria,  } = require('../models')
 const schemaCategoria = require("../schema/categoria.schema")
 
 const validarCategoria = (req, res, next) => {
@@ -8,6 +9,17 @@ const validarCategoria = (req, res, next) => {
     next()
 }
 
+const validarCategoriaId = async (req, res, next) => {
+    const {id} = req.params
+    const categoria = await categoria.findByPk(id)
+    if (categoria) {
+        req.categoria = categoria
+        next()
+    }
+    return res.status(400).json({message: `El id: ${id} no es valido`}) 
+}
+
 module.exports = {
-    validarCategoria
+    validarCategoria,
+    validarCategoriaId
 }

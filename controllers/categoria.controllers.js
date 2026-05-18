@@ -15,13 +15,21 @@ const obtenerCategorias = async (req,res) => {
     }
 }
 
+const obtenerCategoria = (req, res) => {
+    try {
+        const {id} = req.params
+        const categoria = req.categoria
+        res.status(200).json(categoria)
+    } catch {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+
 const crearCategoria = async (req,res) => {
     try {
         const { nombre } = req.body
-        //middleware
-        if(!nombre){
-            return res.status(400).json({message: "Faltan datos obligatorios"})
-        }
         const categoria = await Categoria.create({
             nombre
         })
@@ -31,6 +39,20 @@ const crearCategoria = async (req,res) => {
             error: "Error al crear el categoria"
         })
     }
+}
+
+const actualizarCategoria = async (req, res) => {
+    const {id} = req.params
+    const {categoria} = req.categoria
+
+    categoria = await Categoria.update({
+        nombre,
+    }, {
+        where: {
+            id
+        }
+    }
+    )
 }
 
 const eliminarCategoria = async (req,res) => {
@@ -77,6 +99,8 @@ const obtenerCategoriasConProductos = async (req,res) => {
 // Exporto un objeto con cada funcion
 module.exports = {
     obtenerCategorias,
+    obtenerCategoria,
     crearCategoria,
+    actualizarCategoria,
     eliminarCategoria
 }
