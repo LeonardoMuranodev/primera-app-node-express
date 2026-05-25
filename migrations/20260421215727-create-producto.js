@@ -18,6 +18,15 @@ module.exports = {
       stock: {
         type: Sequelize.INTEGER
       },
+      categoriaId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categoria', // Nombre exacto de la tabla de categorías
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL' // O CASCADE, según la lógica de negocio
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

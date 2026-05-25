@@ -3,7 +3,7 @@ const { Router } = require('express')
 
 //Importo los controladores
 const categoriaController = require('../controllers/categoria.controllers')
-const {validarCategoria} = require("../middlewares/categorias.middlewares")
+const {validarCategoria, validarCategoriaId} = require("../middlewares/categorias.middlewares")
 
 //Instancio el router
 const router = Router()
