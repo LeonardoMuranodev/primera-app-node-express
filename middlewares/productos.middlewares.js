@@ -11,8 +11,8 @@ const validarProducto = (req, res, next) => {
 
 const validarProductoIdConCategoria = async (req, res, next) => {
     try {
-        const {id} = req.params
-        const producto = await Producto.findByPk(id, {
+        const {idProducto} = req.params
+        const producto = await Producto.findByPk(idProducto, {
             attributes: ["nombre", "precio", "stock"],
             include: {
                 model: Categoria,
@@ -35,8 +35,9 @@ const validarProductoIdConCategoria = async (req, res, next) => {
 
 const validarProductoId = async (req, res, next) => {
     try {
-        const {id} = req.params
-        const producto = await Producto.findByPk(id)
+        const {idProducto} = req.params
+        console.log(idProducto)
+        const producto = await Producto.findByPk(idProducto)
         if (!producto) {
             return res.status(400).json({message: "Producto no encontrado"})
         }

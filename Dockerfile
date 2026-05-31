@@ -14,4 +14,4 @@ RUN npm install --build-from-source=sqlite3
 # Copiamos el resto del código
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

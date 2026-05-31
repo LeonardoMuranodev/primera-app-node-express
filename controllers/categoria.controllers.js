@@ -7,7 +7,12 @@ const obtenerCategorias = async (req,res) => {
         const categorias = await Categoria.findAll({
             attributes: ["nombre"],
         })
-        res.status(200).json(categorias)
+
+        if (categorias.length === 0) {
+            res.status(200).json("No hay categorias")
+        }
+
+        res.status(200).json(categorias.map(categoria => categoria.nombre))
     } catch (error) {
         res.status(500).json({
             error: error.message
